@@ -1,0 +1,15 @@
+# Langgraph
+langgraph
+langchain_core
+# Pydantic for BaseModel
+pydantic
+# For exposing as REST API
+fastapi 
+uvicorn 
+cachetools
+# For using uvicorn in colab
+#!pip install nest-asyncio pyngrok
+# for Display and image
+ipython
+# Env
+python-dotenv

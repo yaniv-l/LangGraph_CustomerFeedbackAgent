@@ -1,0 +1,11 @@
+.git
+.env
+.venv
+node_modules
+*.log
+*.code-workspace
+Old_Code_Backup/
+Local/
+#include the below folder but not thier content
+runs/**
+Saved_Detections/**
