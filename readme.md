@@ -32,6 +32,7 @@ This Agent simulate agents working with large languageis, but works all localy t
 1. Clone the repository:
 ```bash
 git clone https://github.com/yourusername/CustomerFeedbackAgent.git
+```
 2. Install dependencies:
 ```bash
 pip install -r requirements.txt
