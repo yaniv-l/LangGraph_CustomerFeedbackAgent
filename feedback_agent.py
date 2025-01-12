@@ -17,8 +17,7 @@ from dotenv import load_dotenv
 # load_dotenv() will be used on local dev envs
 load_dotenv()
 # os.environ Will be used in docekr. Make sure to start the docker with the -e option and provide the OPENAI_API_KEY as a environemnt variable.
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY", "value does not exist")
 # Define the states and tools our agent can use
 class Task(BaseModel):
     task_type: str = ""

@@ -43,7 +43,8 @@ pip install -r requirements.txt
 1. create a hapi.txt file with your api keys (you can have muliple keys seperated by new lines). 
   - Note - This API keys are to access the Aget API server and are not used for the LLM.
 2. If want to used LLM:
-  - Create a .env file, or set an environment variable, with your LLM api key.
+  - Copy .env.example to .env
+  - Update the environment variables with your credentials
   - Adjust the agent implemetation to use the LLM
 
 ## Usage
