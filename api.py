@@ -12,6 +12,7 @@ import time
 from cachetools import TTLCache
 import hashlib
 import uuid
+import os
 
 # Import our feedback agent (feedback_agent.py)
 from feedback_agent import run_feedback_analysis, FeedbackCategory, Priority, TaskType, Task
@@ -61,8 +62,11 @@ try:
     with open('hapi.txt', 'r') as keyfile:
         valid_keys = {key.strip() for key in keyfile.readlines()}
 except FileNotFoundError:
-    valid_keys.add("test")  # Default key for testing
-    logger.info(f"Configuration Error: API key validation file not found. Using default key for testing.")
+    # Docker will provide the API key as an environment variable using the -e option
+    key = os.environ["X-API-Key"] = os.getenv("X-API-Key", "dev-testing")
+    valid_keys.add(key)  # Default key for testing
+    if key == "dev-testing":
+        logger.info(f"Configuration Error: API key validation file not found. Using default key for testing.")
 
 # Cache configuration
 response_cache = TTLCache(maxsize=1000, ttl=3600)  # Cache responses for 1 hour

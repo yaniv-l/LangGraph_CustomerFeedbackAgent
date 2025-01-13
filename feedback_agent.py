@@ -105,16 +105,16 @@ def generate_next_steps(feedback: str, sentiment: str, category: str, priority: 
     steps = []
 
     if priority == Priority.HIGH:
-        steps.append(Task(task_type=TaskType.HUMAN, name="Escelate", description="Escalate to relevant department immediately", time_to_complete=1440))
+        steps.append(Task(task_type=TaskType.HUMAN, name="Escalate", description="Escalate to relevant department immediately", time_to_complete=1440))
 
     if sentiment == "negative":
-        steps.append(Task(task_type=TaskType.HUMAN, name="Refer concern", description="Prepare customer response addressing concerns", time_to_complete=1440))
+        steps.append(Task(task_type=TaskType.HUMAN, name="Refer Concern", description="Prepare customer response addressing concerns", time_to_complete=1440))
     elif sentiment == "positive" or sentiment == "neutral":
-        steps.append(Task(task_type=TaskType.AGENT, name="Pesonelized Article", description="Write a personolized article", time_to_complete=3))
+        steps.append(Task(task_type=TaskType.AGENT, name=" Generate Content", description="Write a personolized article", time_to_complete=3))
 
     if category == FeedbackCategory.TECHNICAL:
         steps.append(Task(task_type=TaskType.AUTO, name="Open Support Ticket", description="Create technical support ticket", time_to_complete=1))
-        steps.append(Task(task_type=TaskType.AGENT, name="Advise on sulotion", description="RAG based solution advisor", time_to_complete=3))
+        steps.append(Task(task_type=TaskType.AGENT, name="Generate Content", description="RAG based solution advisor", time_to_complete=3))
 
     if not steps:
         steps.append(Task(task_type=TaskType.AUTO, name="Log feedback", description="File feedback in customer database for monthly review", time_to_complete=1))
