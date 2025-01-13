@@ -110,7 +110,7 @@ def generate_next_steps(feedback: str, sentiment: str, category: str, priority: 
     if sentiment == "negative":
         steps.append(Task(task_type=TaskType.HUMAN, name="Refer Concern", description="Prepare customer response addressing concerns", time_to_complete=1440))
     elif sentiment == "positive" or sentiment == "neutral":
-        steps.append(Task(task_type=TaskType.AGENT, name=" Generate Content", description="Write a personolized article", time_to_complete=3))
+        steps.append(Task(task_type=TaskType.AGENT, name="Generate Content", description="Write a personolized article", time_to_complete=3))
 
     if category == FeedbackCategory.TECHNICAL:
         steps.append(Task(task_type=TaskType.AUTO, name="Open Support Ticket", description="Create technical support ticket", time_to_complete=1))
