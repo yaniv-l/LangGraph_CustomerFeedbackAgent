@@ -113,7 +113,7 @@ def generate_next_steps(feedback: str, sentiment: str, category: str, priority: 
         steps.append(Task(task_type=TaskType.AGENT, name="Generate Content", description="Write a personolized article", time_to_complete=3))
 
     if category == FeedbackCategory.TECHNICAL:
-        steps.append(Task(task_type=TaskType.AUTO, name="Open Support Ticket", description="Create technical support ticket", time_to_complete=1))
+        steps.append(Task(task_type=TaskType.AUTO, name="Create Support Ticket", description="Create technical support ticket", time_to_complete=1))
         steps.append(Task(task_type=TaskType.AGENT, name="Generate Content", description="RAG based solution advisor", time_to_complete=3))
 
     if not steps:

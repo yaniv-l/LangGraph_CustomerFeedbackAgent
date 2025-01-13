@@ -8,7 +8,7 @@ docker build -t yanivl/langgraph_feedback_agent .
 
 ##### RUN #####
 # Run the containet and pass the OPENAI_API_KEY in the enviroment variable
-docker run -p 8100:8100 -e "OPENAI_API_KEY=no-api-key" --rm yanivl/langgraph_feedback_agent
+docker run -p 8100:8100 -e "OPENAI_API_KEY=no-api-key" -e "X-API-Key=kidibidi" --rm yanivl/langgraph_feedback_agent
 
 # Run the containet in interactive mode and pass the OPENAI_API_KEY in the enviroment variable
 docker run -p 8100:8100 -it -e "OPENAI_API_KEY=no-api-key" --rm yanivl/langgraph_feedback_agent
