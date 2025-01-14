@@ -60,7 +60,8 @@ Create a 400-500 word article that:
 4. Includes creative lifestyle suggestions related to their interests
 5. Uses a [formal/casual] tone appropriate for their demographic
 
-The article should focus on [specific product/topic] and emphasize [key benefit/solution] while maintaining an optimistic, solution-oriented approach."""
+The article should focus on [specific product/topic] and emphasize [key benefit/solution] while maintaining an optimistic, solution-oriented approach.
+Generate the content using email friendly HTML only (no markdown), as if it will be published on our blog or in a customer newsletter."""
 
 personalAdviseSolutionPrompt = """Generate a clear technical solution article for a customer profile and feedback as provided below.
 
@@ -77,7 +78,8 @@ Focus on key issue as provided in the feedback and include:
 - Alternative solutions if first approach doesn't work
 - Related features that could enhance their experience
 
-End with an invitation to explore more advanced capabilities once the issue is resolved."""
+End with an invitation to explore more advanced capabilities once the issue is resolved.
+Generate the content using email friendly HTML only (no markdown), as if it will be published on our blog or in a customer newsletter."""
 
 
 # Tool definitions
