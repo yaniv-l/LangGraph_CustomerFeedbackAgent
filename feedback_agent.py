@@ -50,6 +50,36 @@ class TaskType(str, Enum):
     AGENT = "agent"
     AUTO = "auto"
 
+# Prompts
+personalArticlePrompt = """Write an engaging article for a customer with a profile and feedback as provided below.
+
+Create a 400-500 word article that:
+1. Directly addresses their feedback concerns
+2. Matches their profile and interests
+3. Provides 2-3 practical tips for getting more value from our [product/service]
+4. Includes creative lifestyle suggestions related to their interests
+5. Uses a [formal/casual] tone appropriate for their demographic
+
+The article should focus on [specific product/topic] and emphasize [key benefit/solution] while maintaining an optimistic, solution-oriented approach."""
+
+personalAdviseSolutionPrompt = """Generate a clear technical solution article for a customer profile and feedback as provided below.
+
+Create a 500-600 word troubleshooting guide that:
+1. Validates the customer's frustration and acknowledges the issue
+2. Provides step-by-step solutions matching their technical level
+3. Includes preventive tips to avoid similar issues
+4. Suggests advanced features/capabilities they might enjoy
+5. Uses [technical/simplified] language appropriate for their expertise
+
+Focus on key issue as provided in the feedback and include:
+- Visual aids/diagrams references where helpful
+- Common pitfalls to avoid
+- Alternative solutions if first approach doesn't work
+- Related features that could enhance their experience
+
+End with an invitation to explore more advanced capabilities once the issue is resolved."""
+
+
 # Tool definitions
 def analyze_sentiment(feedback: str) -> str:
     """
@@ -110,11 +140,11 @@ def generate_next_steps(feedback: str, sentiment: str, category: str, priority: 
     if sentiment == "negative":
         steps.append(Task(task_type=TaskType.HUMAN, name="Refer Concern", description="Prepare customer response addressing concerns", time_to_complete=1440))
     elif sentiment == "positive" or sentiment == "neutral":
-        steps.append(Task(task_type=TaskType.AGENT, name="Generate Content", description="Write a personolized article", time_to_complete=3))
+        steps.append(Task(task_type=TaskType.AGENT, name="Generate Content", description=personalArticlePrompt, time_to_complete=3))
 
     if category == FeedbackCategory.TECHNICAL:
         steps.append(Task(task_type=TaskType.AUTO, name="Create Support Ticket", description="Create technical support ticket", time_to_complete=1))
-        steps.append(Task(task_type=TaskType.AGENT, name="Generate Content", description="RAG based solution advisor", time_to_complete=3))
+        steps.append(Task(task_type=TaskType.AGENT, name="Generate Content", description=personalAdviseSolutionPrompt, time_to_complete=3))
 
     if not steps:
         steps.append(Task(task_type=TaskType.AUTO, name="Log feedback", description="File feedback in customer database for monthly review", time_to_complete=1))
